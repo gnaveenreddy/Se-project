@@ -2,7 +2,15 @@ import streamlit as st
 import streamlit as st
 import mysql.connector
 from components import signup
+# from components import classes
+
+
+
+if "login" not in st.session_state:
+   st.session_state.login=False
+
 def login_page():
+    # st.sidebar.write(st.session_state)
     conn = mysql.connector.connect(
         host='localhost',
         user='root',
@@ -29,10 +37,10 @@ def login_page():
         cursor.execute(query, (username,))
         result = cursor.fetchone()
         if(result):
-           
            fetched_password=result[0]
            if  password == fetched_password:
                st.success(f"Welcome, {username}!")
+               st.session_state.login=True
             # Add logic for redirecting to the user's dashboard or another page
            else:
 

@@ -1,6 +1,7 @@
 import streamlit as st
 
 def Cardio():
+    st.session_state.login=True
     st.header("Cardio Section")
     st.write("Explore our variety of fitness classes to find the perfect workout for you.")
     
@@ -59,6 +60,7 @@ if __name__ == "__main__":
     Cardio()
 
 def Yoga():
+    st.session_state.login=True
     st.header("Yoga Section")
     st.write("Explore our variety of Yoga classes for you.")
     
@@ -126,6 +128,7 @@ if __name__ == "__main__":
     Yoga()
 
 def Weight():
+    st.session_state.login=True
     st.header("Weight-Lifting  Section")
     st.write("Explore our variety of Weight-Lifting practices and Competitions for you.")
     

@@ -1,62 +1,8 @@
 # components/about_component.py
 def contact():
       
-    import PIL as Image
+
     import streamlit as st
-    
-    st.header("Our Facilities")
-    st.markdown(
-        """
-        Welcome to our **gym**! We are passionate about fitness and dedicated to helping you achieve your health goals."""
-    )
-    image_paths = [
-        "https://images.pexels.com/photos/7174396/pexels-photo-7174396.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://img.freepik.com/free-photo/gym-with-treadmills-light-wall_1340-37799.jpg",
-        "https://t4.ftcdn.net/jpg/04/87/53/03/240_F_487530379_yetg9Zqrltr27ktNm8Qe2WJ5DHFciUhm.jpg",
-        "https://t4.ftcdn.net/jpg/06/10/63/21/240_F_610632116_VhHJygoD5cFAdhp2arETpTa8fWkXx2tw.jpg"
-        
-        # Add more image paths here
-    ]
-    # Create columns to display images horizontallif
-    col1, col2,col3,col4 = st.columns(4)  # Adjust the number of columns as needed
-        
-    for i, image_path in enumerate(image_paths):
-                
-                if i % 4 == 0:
-                    col1.image(image_path,caption="Workout Area", use_column_width=True)
-                elif i % 4 == 1:
-                    col2.image(image_path, caption="Thread Mill Zone",use_column_width=True)
-                elif i % 4 == 2:
-                    col3.image(image_path, caption="Hard Workout Zone",use_column_width=True)
-                elif i % 4 == 3:
-                    col4.image(image_path, caption="Peace Zone",use_column_width=True)
-    
-    st.header("Our Trainers")
-    st.write("We are a dedicated team of fitness professionals committed to helping you achieve your goals.")
-    st.write("Our Trainers are our assets and good guide for your overall fitness.")
-    image_paths = [
-        "https://images.pexels.com/photos/6455821/pexels-photo-6455821.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "https://images.pexels.com/photos/6551061/pexels-photo-6551061.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/7991689/pexels-photo-7991689.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        "https://images.pexels.com/photos/4498220/pexels-photo-4498220.jpeg?auto=compress&cs=tinysrgb&w=600"
-        
-        # Add more image paths here
-    ]
-    # Create columns to display images horizontall
-    col1, col2,col3,col4 = st.columns(4)  # Adjust the number of columns as needed
-        
-    for i, image_path in enumerate(image_paths):
-                
-                if i % 4 == 0:
-                    col1.image(image_path,caption="Andrew (Personal Trainer", use_column_width=True)
-                elif i % 4 == 1:
-                    col2.image(image_path, caption="Tate (Aerobic Trainer)",use_column_width=True)
-                elif i % 4 == 2:
-                    col3.image(image_path, caption="Crew (Fitness Director)",use_column_width=True)
-                elif i % 4 == 3:
-                    col4.image(image_path, caption="Jenni (Yoga Trainer)",use_column_width=True)
-    
-    
     # st.header("About Us")
     st.header("Contact Us")
     st.write("Feel free to reach out to us using the contact information below.")

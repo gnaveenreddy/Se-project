@@ -24,6 +24,22 @@ def admin():
             query = "SELECT * FROM users"
             cursor.execute(query)
             result = cursor.fetchall()
+            st.write("    **USER DETAILS:**      ")
+            if result:
+                # Get column names
+                columns = [i[0] for i in cursor.description]
+
+                # Display table header  
+                st.table([columns] + result)
+
+            else:
+                st.warning("No data available.")
+
+            st.write("    **USER REVIEWS:**      ")
+            cursor = conn.cursor()
+            query = "SELECT * FROM reviews"
+            cursor.execute(query)
+            result = cursor.fetchall()
 
             if result:
                 # Get column names

@@ -1,8 +1,11 @@
 import streamlit as st
 import mysql.connector
 import re
-
+from components import login
 # Establish connection
+if 'signup' not in st.session_state:
+    st.session_state.signup = False
+
 def signup_form():
     conn = mysql.connector.connect(
         host='localhost',
@@ -22,6 +25,7 @@ def signup_form():
         password = st.text_input("Enter Your Password", type="password")
         confirm_password = st.text_input("Confirm Password", type="password")
         age = st.slider("Select your age", min_value=0, max_value=100, value=25)
+        trainer=st.selectbox("Select Your Trainer",["Andrew","Tate","Crew","Jenni"])
         agree_terms = st.checkbox("I agree to the terms and conditions")
         submit_button = st.form_submit_button("Sign Up")
 
@@ -37,13 +41,22 @@ def signup_form():
             st.warning("Password and confirm password do not match.")
         else:
             # Add your signup logic here (e.g., store user data in a database)
-            query="INSERT INTO users (user_name, user_password,email,age,gender) VALUES (%s, %s,%s,%s,%s)"
-            values = (user_name, password,email,age,gender)
-            cursor.execute(query, values)   
-            conn.commit()
-            cursor.close()
-            conn.close()
-            st.success(f"Successfully signed up, {user_name}!")
+            q="Select user_name from users where user_name= %s"
+
+            cursor.execute(q,(user_name,))
+            res=cursor.fetchall()
+            if(res):
+                st.warning("user already exist")
+                login.login_page()
+            else:
+               query="INSERT INTO users (user_name, user_password,email,age,gender,trainer) VALUES (%s, %s,%s,%s,%s,%s)"
+               values = (user_name, password,email,age,gender,trainer)
+               cursor.execute(query, values)   
+               conn.commit()
+               cursor.close()
+               conn.close()
+               st.session_state.signup=True
+               st.success(f"Successfully signed up, {user_name}!")
 
 
 if __name__ == "__main__":
